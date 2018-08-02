@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            $(function(){
+                var user,pass
+                $("#submit").click(function(){
+                    user = $("#user").val()
+                    pass = $("#password").val()
+                    $.ajax({
+                        type:"POST",
+                        url: "http://localhost:3000/login",
+                        data:{
+                            "userName":user,
+                            "password":pass
+                        },
+                        success:function(data){
+                            if (data.code === 200) {
+                                console.log(data)
+                                alert(data.message)
+                            } else {
+                                alert(data.message)
+                            }
+                        }
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="loginBox">
+            <h4>登录实战</h4>
+            <p>用户名：<input type="text" id="user"></p>
+            <p>密码：<input type="password" id="password" style="margin-left:16px"></p>
+            <p><input type="button" id="submit" value="登录"></p>
+        </div>
+    </body>
+</html>

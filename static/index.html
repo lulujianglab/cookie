@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            $(function(){
+                var user,pass
+                $("#loginout").click(function(){
+                    $.ajax({
+                        type:"post",
+                        url: "http://localhost:3000/loginout",
+                        success: function (result) {
+                            $(".loginoutBox").html(result)
+                        }
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="loginoutBox">
+            <h1 style="color:red" class="bg">欢迎~你已成功登录(*^▽^*)</h1>
+            <p><input type="button" id="loginout" value="退出"></p>
+        </div>
+    </body>
+</html>
